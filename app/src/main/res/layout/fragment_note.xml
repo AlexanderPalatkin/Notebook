@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_note_bg"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:showIn=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_fragment_note"
+        android:autofillHints="username"
+        android:hint="@string/name_note"
+        android:inputType="textPersonName"
+        android:maxLines="1"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/descriptions_fragment_note"
+        android:autofillHints="text"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:hint="@string/description_note"
+        android:maxLines="8"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_changes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_shadow_start_color"
+        android:text="@string/save_button" />
+
+</LinearLayout>
