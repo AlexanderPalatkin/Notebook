@@ -46,7 +46,7 @@ public class NoteListFragment extends Fragment {
             String note = notesArray[i];
             TextView textView = new TextView(getContext());
             textView.setText(note);
-            textView.setTextSize(30);
+            textView.setTextSize(getResources().getDimension(R.dimen.font_size));
             final int finalIndex = i;
             textView.setOnClickListener(v -> {
                 ((Controller) requireActivity()).openNoteScreen(new NoteEntity(note,

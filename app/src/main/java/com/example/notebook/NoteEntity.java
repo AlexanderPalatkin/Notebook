@@ -10,7 +10,6 @@ public class NoteEntity implements Parcelable {
     private String description;
     private Date date;
 
-
     public NoteEntity(String name, String description) {
         this.name = name;
         this.description = description;

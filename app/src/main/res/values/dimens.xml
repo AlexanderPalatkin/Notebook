@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="nav_header_dimen">42sp</dimen>
+    <dimen name="about_text_size">30sp</dimen>
+    <dimen name="about_text_marg_top">120dp</dimen>
+    <dimen name="about_text_marg_horiz">20dp</dimen>
+    <dimen name="font_size">16dp</dimen>
+
+</resources>
