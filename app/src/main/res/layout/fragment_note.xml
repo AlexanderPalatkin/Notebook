@@ -9,18 +9,18 @@
     tools:showIn=".MainActivity">
 
     <EditText
+        android:id="@+id/title_fragment_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/name_fragment_note"
         android:autofillHints="username"
-        android:hint="@string/name_note"
+        android:hint="@string/title_note"
         android:inputType="textPersonName"
         android:maxLines="1"/>
 
     <EditText
+        android:id="@+id/descriptions_fragment_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/descriptions_fragment_note"
         android:autofillHints="text"
         android:inputType="textMultiLine"
         android:gravity="top|start"
@@ -29,9 +29,9 @@
         android:scrollbars="vertical" />
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/date" />
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_changes"

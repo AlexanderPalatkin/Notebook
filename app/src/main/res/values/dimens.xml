@@ -6,5 +6,10 @@
     <dimen name="about_text_marg_top">120dp</dimen>
     <dimen name="about_text_marg_horiz">20dp</dimen>
     <dimen name="font_size">16dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="textDescription">20sp</dimen>
+    <dimen name="textTitle">36sp</dimen>
+    <dimen name="heightImage">90dp</dimen>
 
 </resources>

@@ -10,14 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.util.Date;
 
 public class NoteFragment extends Fragment {
     public static final String NOTE_ARGS_KEY = "NOTE_ARGS_KEY";
 
+    @Nullable
     private NoteEntity note = null;
-
-    private EditText nameEt;
+    private Button saveButton;
+    private EditText titleEt;
     private EditText descriptionEt;
     private TextView date;
 
@@ -29,44 +33,58 @@ public class NoteFragment extends Fragment {
         return noteFragment;
     }
 
-    public interface Controller {
-        void saveResult(NoteEntity note);
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_note, null);
-        nameEt = view.findViewById(R.id.name_fragment_note);
-        descriptionEt = view.findViewById(R.id.descriptions_fragment_note);
-        date = view.findViewById(R.id.date);
-        Button saveButton = view.findViewById(R.id.save_changes);
-
-        saveButton.setOnClickListener(v -> {
-            Controller controller = (Controller) getActivity();
-            assert controller != null;
-            controller.saveResult(new NoteEntity(
-                    nameEt.getText().toString(),
-                    descriptionEt.getText().toString()
-            ));
-        });
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        nameEt.setText(note.getName());
-        descriptionEt.setText(note.getDescription());
-        date.setText(note.getDate().toString());
-    }
-
-    @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (!(context instanceof Controller)) {
             throw new RuntimeException("Activity must implements Controller");
         }
-        if (getArguments() != null){
+        if (getArguments() != null) {
             note = getArguments().getParcelable(NOTE_ARGS_KEY);
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_note, container, false);
+        saveButton = view.findViewById(R.id.save_changes);
+        titleEt = view.findViewById(R.id.title_fragment_note);
+        descriptionEt = view.findViewById(R.id.descriptions_fragment_note);
+        date = view.findViewById(R.id.date);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        assert getArguments() != null;
+        note = (NoteEntity)getArguments().getParcelable(NOTE_ARGS_KEY);
+        fillNote(note);
+        saveButton.setOnClickListener(v -> {
+            getContract().saveNote(gatherNote());
+            date.setText(String.valueOf(new Date()));
+        });
+    }
+
+    private void fillNote(NoteEntity note) {
+        if (note == null) return;
+        titleEt.setText(note.getTitle());
+        descriptionEt.setText(note.getDescription());
+        date.setText(String.valueOf(note.getDate()));
+    }
+
+    private NoteEntity gatherNote() {
+        return new NoteEntity(
+                note == null ? NoteEntity.generateNewId() : note.getId(),
+                titleEt.getText().toString(),
+                descriptionEt.getText().toString()
+        );
+    }
+
+    private Controller getContract() {
+        return (Controller) getActivity();
+    }
+
+    interface Controller {
+        void saveNote(NoteEntity note);
     }
 }

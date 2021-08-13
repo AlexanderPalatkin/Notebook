@@ -12,4 +12,9 @@
         android:icon="@drawable/ic_action_about"
         android:title="@string/about" />
 
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/ic_action_back"
+        android:title="@string/back" />
+
 </menu>
