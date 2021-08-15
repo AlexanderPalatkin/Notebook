@@ -14,4 +14,7 @@
     <string name="desc">Description</string>
     <string name="create_note_title">New note</string>
     <string name="edit_note_title">Edit note</string>
+    <string name="context_menu_header">\"Action with note \"</string>
+    <string name="change_note">View or change note</string>
+    <string name="delete_note">Delete note</string>
 </resources>
