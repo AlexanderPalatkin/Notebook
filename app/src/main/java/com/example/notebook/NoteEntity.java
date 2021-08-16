@@ -3,23 +3,41 @@ package com.example.notebook;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class NoteEntity implements Parcelable {
-    private String name;
-    private String description;
+    private final String id;
+    private final String title;
+    private final String description;
     private Date date;
 
-
-    public NoteEntity(String name, String description) {
-        this.name = name;
+    NoteEntity(String id,
+               String title,
+               String description) {
+        this.id = id;
+        this.title = title;
         this.description = description;
         this.date = new Date();
     }
 
     protected NoteEntity(Parcel in) {
-        name = in.readString();
+        id = in.readString();
+        title = in.readString();
         description = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(title);
+        dest.writeString(description);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<NoteEntity> CREATOR = new Creator<NoteEntity>() {
@@ -34,8 +52,12 @@ public class NoteEntity implements Parcelable {
         }
     };
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
@@ -46,14 +68,9 @@ public class NoteEntity implements Parcelable {
         return date;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public static String generateNewId() {
+        return UUID.randomUUID().toString();
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(description);
-    }
+
 }

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_container_bg">#FFD18E</color>
     <color name="fragment_note_bg">#88FFF3</color>
+    <color name="list_bg_color">#B5E47E</color>
 </resources>

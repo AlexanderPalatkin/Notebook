@@ -3,19 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/main_container_bg"/>
 
     <FrameLayout
         android:id="@+id/detail_container"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/fragment_note_bg"/>
 
 </LinearLayout>
