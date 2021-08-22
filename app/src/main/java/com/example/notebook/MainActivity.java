@@ -16,6 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity implements NoteFragment.Controller, NoteListFragment.Controller {
+
     private static final String NOTES_LIST_FRAGMENT_TAG = "NOTES_LIST_FRAGMENT_TAG";
     private boolean isTwoPaneMod = false;
 
@@ -65,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements NoteFragment.Cont
     @Override
     public void createNewNote() {
         showEditNote();
+    }
+
+    @Override
+    public void deleteNote(NoteEntity delNote) {
+        NoteListFragment noteListFragment =
+                (NoteListFragment) getSupportFragmentManager().findFragmentByTag(NOTES_LIST_FRAGMENT_TAG);
+        assert noteListFragment != null;
+        noteListFragment.deleteNote(delNote);
     }
 
     @Override
