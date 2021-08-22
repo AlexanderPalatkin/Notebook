@@ -11,5 +11,6 @@
     <dimen name="textDescription">20sp</dimen>
     <dimen name="textTitle">36sp</dimen>
     <dimen name="heightImage">90dp</dimen>
+    <dimen name="height_separator_item">10dp</dimen>
 
 </resources>

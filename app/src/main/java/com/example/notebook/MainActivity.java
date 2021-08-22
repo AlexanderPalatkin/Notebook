@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NoteFragment.Cont
     private void showNoteList() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_container, new NoteListFragment(), NOTES_LIST_FRAGMENT_TAG)
+                .add(R.id.main_container, new NoteListFragment(), NOTES_LIST_FRAGMENT_TAG)
                 .commit();
     }
 
