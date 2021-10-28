@@ -17,4 +17,10 @@
     <string name="context_menu_header">\"Action with note \"</string>
     <string name="change_note">View or change note</string>
     <string name="delete_note">Delete note</string>
+    <string name="clear">Clear</string>
+    <string name="warning">Warning</string>
+    <string name="clear_note_list">Are you sure you want to clear your notes list?</string>
+    <string name="yes_clear_list">Clear list</string>
+    <string name="no_clear_list">Cancel</string>
+    <string name="yes_delete_note">Are you sure you want to delete the note?</string>
 </resources>

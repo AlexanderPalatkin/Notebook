@@ -8,24 +8,44 @@ import java.util.Date;
 import java.util.UUID;
 
 public class NoteEntity implements Parcelable {
+    public static final Creator<NoteEntity> CREATOR = new Creator<NoteEntity>() {
+        @Override
+        public NoteEntity createFromParcel(Parcel in) {
+            return new NoteEntity(in);
+        }
+
+        @Override
+        public NoteEntity[] newArray(int size) {
+            return new NoteEntity[size];
+        }
+    };
     private final String id;
-    private final String title;
-    private final String description;
+    private String title;
+    private String description;
     private Date date;
 
     NoteEntity(String id,
                String title,
-               String description) {
+               String description,
+               Date date) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.date = new Date();
+        this.date = date;
     }
 
     protected NoteEntity(Parcel in) {
         id = in.readString();
         title = in.readString();
         description = in.readString();
+    }
+
+    public static String generateNewId() {
+        return UUID.randomUUID().toString();
+    }
+
+    public static Date getCurrentDate() {
+        return Calendar.getInstance().getTime();
     }
 
     @Override
@@ -39,18 +59,6 @@ public class NoteEntity implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
-    public static final Creator<NoteEntity> CREATOR = new Creator<NoteEntity>() {
-        @Override
-        public NoteEntity createFromParcel(Parcel in) {
-            return new NoteEntity(in);
-        }
-
-        @Override
-        public NoteEntity[] newArray(int size) {
-            return new NoteEntity[size];
-        }
-    };
 
     public String getId() {
         return id;
@@ -68,9 +76,8 @@ public class NoteEntity implements Parcelable {
         return date;
     }
 
-    public static String generateNewId() {
-        return UUID.randomUUID().toString();
+    public void update(NoteEntity newNote) {
+        description = newNote.description;
+        title = newNote.title;
     }
-
-
 }

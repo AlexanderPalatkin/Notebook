@@ -57,7 +57,7 @@ public class NoteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         assert getArguments() != null;
-        note = (NoteEntity)getArguments().getParcelable(NOTE_ARGS_KEY);
+        note = (NoteEntity) getArguments().getParcelable(NOTE_ARGS_KEY);
         fillNote(note);
         saveButton.setOnClickListener(v -> {
             getContract().saveNote(gatherNote());
@@ -76,7 +76,8 @@ public class NoteFragment extends Fragment {
         return new NoteEntity(
                 note == null ? NoteEntity.generateNewId() : note.getId(),
                 titleEt.getText().toString(),
-                descriptionEt.getText().toString()
+                descriptionEt.getText().toString(),
+                note == null ? NoteEntity.getCurrentDate() : note.getDate()
         );
     }
 
